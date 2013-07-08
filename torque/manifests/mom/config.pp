@@ -1,7 +1,7 @@
 class torque::mom::config(
   )inherits torque::params {
     $package_list = ['torque-mom','torque-client']
-
+    $torque_server_name = $torque_server_name
    package { $package_list:
     ensure => installed,
   }
@@ -13,5 +13,15 @@ class torque::mom::config(
       group   => 'root',
       mode    => '0644',
   }
+  
+  file { '/etc/torque/server_name':
+      ensure  => present,
+      content  => template("${module_name}/mom_server_name.erb"),
+      require => Package['torque-mom'],
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+  }
+  
     
   }
