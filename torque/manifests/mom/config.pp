@@ -1,7 +1,7 @@
 class torque::mom::config(
   )inherits torque::params {
     $package_list = ['torque-mom','torque-client']
-    $torque_server_name = $torque_server_name
+    $torque_server = $torque_server
    package { $package_list:
     ensure => installed,
   }

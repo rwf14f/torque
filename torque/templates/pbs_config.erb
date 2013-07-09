@@ -1,5 +1,5 @@
-$pbsserver <%= @torque_server_name %>
-$restricted <%= @torque_server_name %>
+$pbsserver <%= @torque_server %>
+$restricted <%= @torque_server %>
 $logevent 255
 $ideal_load <%= Integer(@processorcount) + 0.5 %>
 max_load <%= Integer(@processorcount) * 1.2  %>
