@@ -1,0 +1,28 @@
+# written by puppet torque module
+# manual modifications will be overwritten
+SERVERHOST <%= @server %>
+SERVERPORT <%= @port %>
+SERVERMODE <%= @mode %>
+ADMIN1 <%= @admin1 %>
+RMCFG[base] <%= @rmcfg_type %> <%= @rmcfg_options %>
+ADMINHOST <%= @adminhost %>
+<% if @admin3 -%>
+ADMIN3 <%= @admin3 %> #edginfo rgma edguser ldap
+<% end -%>
+<% @general_options.keys.sort.each do |key| -%>
+<%= key %> <%= @general_options[key] %>
+<% end -%>
+<% @options.keys.sort.each do |key| -%>
+<%= key %> <%= @options[key] %>
+<% end -%>
+<% @groupcfg.keys.sort.each do |key| -%>
+GROUPCFG[<%= key %>] <%= @groupcfg[key] %>
+<% end -%>
+<% @usercfg.keys.sort.each do |key| -%>
+USERCFG[<%= key %>] <%= @usercfg[key] %>
+<% end -%>
+<% @srcfg.keys.sort.each do |key|
+	@srcfg[key].each do |value|-%>
+SRCFG[<%= key %>] <%= value %>
+<%	end
+end -%>
