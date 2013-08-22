@@ -1,5 +1,6 @@
-class torque::mom (
-  ) inherits torque::params {
-    include torque::mom::config
-    include torque::munge::config
-  }
+class torque::mom {
+  class { 'torque::mom::install': }
+  class { 'torque::mom::config': }
+  class { 'torque::mom::service': }
+  class { 'torque::munge': }
+}
