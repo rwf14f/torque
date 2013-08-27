@@ -30,6 +30,7 @@ class torque::params {
     'tcp_timeout',
     'next_job_number',
   ]
+  # default torque server configuration that is set by qmgr ('set server ' is prepended by the module)
   $torque_qmgr_server     = [
     # internal defaults, usually not needed
 #    "acl_hosts = ${::fqdn}",
@@ -52,6 +53,7 @@ class torque::params {
     'kill_delay = 10',
     "authorized_users = *@${::fqdn}",
   ]
+  # default set up for a single queue
   $torque_qmgr_qdefaults  = [
     'queue_type = Execution',
     'resources_max.cput = 48:00:00',
@@ -60,6 +62,10 @@ class torque::params {
     'started = True',
     'acl_group_enable = True',
   ]
+  # default queue definitions
+  # empty, because queues are not set up by default
+  # this is a hash with the queue name as key and an array of configuration options as value
+  # if no value is specified then the default options array ($torque_qmgr_qdefaults) is used
   $torque_qmgr_queues     = {}
   # maui options
   $maui_install_ensure    = 'installed'

@@ -28,7 +28,7 @@ class torque::server::config(
     path        => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin',
     command     => 'cat /var/lib/torque/qmgr_config | qmgr',
     onlyif      => 'grep -vq "^[[:space:]]*\(#\|$\)" /var/lib/torque/qmgr_config',
-#    refreshonly => true,
+    refreshonly => true,
     subscribe   => File['/var/lib/torque/qmgr_config'],
     logoutput   => true,
   }

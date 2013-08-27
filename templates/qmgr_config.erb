@@ -4,12 +4,8 @@
 <% end -%>
 # queue commands
 <% @qconfig.keys.sort.each do |queue| -%>
-<%	@qconfig[queue].each do |value|
-		if value =~ /^create queue / -%>
+<%	@qconfig[queue].each do |value| -%>
 <%= value %>
-<%		else -%>
-set queue <%= queue %> <%= value %>
-<%		end
-	end
+<%	end
 end -%>
 # node commands
