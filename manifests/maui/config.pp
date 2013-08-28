@@ -8,10 +8,11 @@ class torque::maui::config(
   $admin1          = $torque::params::maui_admin1,
   $admin3          = $torque::params::maui_admin3,
   $general_options = $torque::params::maui_generalopt,
-  $options         = $torque::params::maui_opt,
+  $options         = $torque::params::maui_options,
   $groupcfg        = $torque::params::maui_groupcfg,
   $usercfg         = $torque::params::maui_usercfg,
   $srcfg           = $torque::params::maui_srcfg,
+  $mauifile        = $torque::params::mauifile
 ) inherits torque::params {
   file { '/var/spool/maui/maui.cfg':
     ensure  => 'present',

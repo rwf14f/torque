@@ -12,8 +12,10 @@ ADMIN3 <%= @admin3 %>
 <% @general_options.keys.sort.each do |key| -%>
 <%= key %> <%= @general_options[key] %>
 <% end -%>
-<% @options.keys.sort.each do |key| -%>
+<% if @options %>
+<%  @options.keys.sort.each do |key| -%>
 <%= key %> <%= @options[key] %>
+<% end -%>
 <% end -%>
 <% @groupcfg.keys.sort.each do |key| 
 	if @groupcfg[key].kind_of?(Array)
