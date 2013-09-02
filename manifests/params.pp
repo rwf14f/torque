@@ -23,6 +23,7 @@ class torque::params {
   $server_service_ensure  = 'running'
   $server_service_enable  = true
   $torque_server_name     = $::fqdn
+  $torque_server_nodes    = []
   # the following options are protected from being unset if they don't appear in torque_qmgr_server
   $torque_qmgr_present    = [
     'acl_hosts',

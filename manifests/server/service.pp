@@ -8,6 +8,9 @@ class torque::server::service(
     hasrestart => true,
     hasstatus  => true,
     require    => Package['torque-server'],
-    subscribe  => File['/etc/torque/server_name'],
+    subscribe  => [
+      File['/etc/torque/server_name'],
+      File['/etc/torque/nodes'],
+    ],
   }
 }
