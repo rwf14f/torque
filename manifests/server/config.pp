@@ -1,18 +1,27 @@
 class torque::server::config (
   $torque_server       =  $torque::params::torque_server_name,
   $nodes               =  $torque::params::torque_server_nodes,
-  $qmgr_server         =  $torque::params::torque_qmgr_server,
-  $qmgr_queue_defaults =  $torque::params::torque_qmgr_qdefaults,
-  $qmgr_queues         =  $torque::params::torque_qmgr_queues,
 ) inherits torque::params
 {
-    class {'torque::server::baseconfig':
-       torque_server       => $torque_server,
-       nodes               => $nodes,
-    }
-    class {'torque::server::qmgrconfig':
-       qmgr_server         => $qmgr_server ,
-       qmgr_queue_defaults => $qmgr_queue_defaults,
-       qmgr_queues         => $qmgr_queues,
-    }
+  file { '/etc/torque/server_name':
+    ensure  => 'present',
+    content => template("${module_name}/server_name.erb"),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    require => Package['torque-server'],
+  }
+  file { '/etc/torque/nodes':
+    ensure  => 'present',
+    content => template("${module_name}/nodes.erb"),
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0600',
+    require => Package['torque-server'],
+  }
+  file { '/var/lib/torque/server_priv/nodes':
+    ensure  => 'link',
+    target  => '/etc/torque/nodes',
+    require => File['/etc/torque/nodes'],
+  }
 }
