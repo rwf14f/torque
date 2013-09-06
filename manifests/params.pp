@@ -88,6 +88,8 @@ class torque::params {
   # this is a hash with the queue name as key and an array of configuration options as value
   # if no value is specified then the default options array ($torque_qmgr_qdefaults) is used
   $torque_qmgr_queues     = {}
+  # server process limits
+  $torque_limits_nofiles  = 4096
   # maui options
   $maui_install_ensure    = 'installed'
   $maui_service_ensure    = 'running'
