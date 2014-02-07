@@ -1,29 +1,4 @@
 class torque::params {
-  # ==== torque::munge ====
-  # -- torque::munge::install --
-  # ensure: specifies whether to install the munge packages
-  #   default key: $munge_install_ensure
-  #   hiera APL key: torque::munge::install::ensure
-  $munge_install_ensure   = 'installed'
-
-  # -- torque::munge::service --
-  # ensure: specifies whether to run the munge service
-  #   default key: $munge_service_ensure
-  #   hiera APL key: torque::munge::service::ensure
-  $munge_service_ensure   = 'running'
-  # enable: specifies whether to start the munge service during boot
-  #   default key: $munge_service_enabled
-  #   hiera APL key: torque::munge::service::enable
-  $munge_service_enabled  = true
-
-  # -- torque::munge::config --
-  # key_location: specifies where to find the munge key
-  #     this has to be either a file:// or puppet:// url that can be used file the puppet file type
-  #     this is a mandatory parameter, there is no default value
-  #   default key: $munge_key_location
-  #   hiera APL key: torque::munge::config::key_location
-  $munge_key_location     = undef
-
   # ==== torque::mom ====
   # mom options
   $mom_install_ensure     = 'installed'
